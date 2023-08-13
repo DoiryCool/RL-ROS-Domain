@@ -112,13 +112,16 @@ public class JoymanController : Agent
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<GluemanController>(out GluemanController joyman)){
+        if(other.TryGetComponent<GluemanController>(out GluemanController glueman)){
             SetReward(-1000f);
             EndEpisode();
         }
         if(other.TryGetComponent<Wall>(out Wall wall)){
             SetReward(-1000f);
             EndEpisode();
+        }
+        if(other.TryGetComponent<Goal>(out Goal goal)){
+            satiety = FoodReward + satiety < MAX_SATIETY ?  FoodReward + satiety : MAX_SATIETY;
         }
     }
 

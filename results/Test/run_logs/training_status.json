@@ -1,45 +1,99 @@
 {
-    "GluemanBh": {
-        "checkpoints": [
-            {
-                "steps": 4096,
-                "file_path": "results/Test/GluemanBh/GluemanBh-4096.onnx",
-                "reward": null,
-                "creation_time": 1691940924.5261378,
-                "auxillary_file_paths": [
-                    "results/Test/GluemanBh/GluemanBh-4096.pt"
-                ]
-            }
-        ],
-        "final_checkpoint": {
-            "steps": 4096,
-            "file_path": "results/Test/GluemanBh.onnx",
-            "reward": null,
-            "creation_time": 1691940924.5261378,
-            "auxillary_file_paths": [
-                "results/Test/GluemanBh/GluemanBh-4096.pt"
-            ]
-        }
-    },
     "JoymanBh": {
         "checkpoints": [
             {
-                "steps": 1408,
-                "file_path": "results/Test/JoymanBh/JoymanBh-1408.onnx",
+                "steps": 295018,
+                "file_path": "results/Test/JoymanBh/JoymanBh-295018.onnx",
                 "reward": null,
-                "creation_time": 1691940924.5690794,
+                "creation_time": 1691953427.3739789,
                 "auxillary_file_paths": [
-                    "results/Test/JoymanBh/JoymanBh-1408.pt"
+                    "results/Test/JoymanBh/JoymanBh-295018.pt"
+                ]
+            },
+            {
+                "steps": 313073,
+                "file_path": "results/Test/JoymanBh/JoymanBh-313073.onnx",
+                "reward": null,
+                "creation_time": 1691953563.324836,
+                "auxillary_file_paths": [
+                    "results/Test/JoymanBh/JoymanBh-313073.pt"
+                ]
+            },
+            {
+                "steps": 327956,
+                "file_path": "results/Test/JoymanBh/JoymanBh-327956.onnx",
+                "reward": -1000.0,
+                "creation_time": 1691953827.4462907,
+                "auxillary_file_paths": [
+                    "results/Test/JoymanBh/JoymanBh-327956.pt"
+                ]
+            },
+            {
+                "steps": 350111,
+                "file_path": "results/Test/JoymanBh/JoymanBh-350111.onnx",
+                "reward": -1000.0,
+                "creation_time": 1691954037.4782696,
+                "auxillary_file_paths": [
+                    "results/Test/JoymanBh/JoymanBh-350111.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 1408,
+            "steps": 350111,
             "file_path": "results/Test/JoymanBh.onnx",
-            "reward": null,
-            "creation_time": 1691940924.5690794,
+            "reward": -1000.0,
+            "creation_time": 1691954037.4782696,
             "auxillary_file_paths": [
-                "results/Test/JoymanBh/JoymanBh-1408.pt"
+                "results/Test/JoymanBh/JoymanBh-350111.pt"
+            ]
+        }
+    },
+    "GluemanBh": {
+        "checkpoints": [
+            {
+                "steps": 295275,
+                "file_path": "results/Test/GluemanBh/GluemanBh-295275.onnx",
+                "reward": -1000.0,
+                "creation_time": 1691953427.4030619,
+                "auxillary_file_paths": [
+                    "results/Test/GluemanBh/GluemanBh-295275.pt"
+                ]
+            },
+            {
+                "steps": 313221,
+                "file_path": "results/Test/GluemanBh/GluemanBh-313221.onnx",
+                "reward": null,
+                "creation_time": 1691953563.356389,
+                "auxillary_file_paths": [
+                    "results/Test/GluemanBh/GluemanBh-313221.pt"
+                ]
+            },
+            {
+                "steps": 327410,
+                "file_path": "results/Test/GluemanBh/GluemanBh-327410.onnx",
+                "reward": null,
+                "creation_time": 1691953827.4182117,
+                "auxillary_file_paths": [
+                    "results/Test/GluemanBh/GluemanBh-327410.pt"
+                ]
+            },
+            {
+                "steps": 363920,
+                "file_path": "results/Test/GluemanBh/GluemanBh-363920.onnx",
+                "reward": null,
+                "creation_time": 1691954037.4510841,
+                "auxillary_file_paths": [
+                    "results/Test/GluemanBh/GluemanBh-363920.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 363920,
+            "file_path": "results/Test/GluemanBh.onnx",
+            "reward": null,
+            "creation_time": 1691954037.4510841,
+            "auxillary_file_paths": [
+                "results/Test/GluemanBh/GluemanBh-363920.pt"
             ]
         }
     },

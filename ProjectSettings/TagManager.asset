@@ -8,6 +8,10 @@ TagManager:
   - Goal
   - Wall
   - Floor
+  - Food
+  - Enermy
+  - Glueman
+  - Joyman
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 # RL-ROS-Domain(Developing)
 
 ---
+
 ![替代文本](./Images/m1-2.png)
 This is a project about reinforcement learning on Unity Agent and ROS. Here, I have provided some scenes for reference.
 
@@ -22,10 +23,10 @@ This is a project about reinforcement learning on Unity Agent and ROS. Here, I h
 
 ---
 
-|   | Scene       | Image                                                     | Description                                                                                                                                                                                                                                                                                                                                              |
-| - | ----------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1 | RollerAgent | ![替代文本](./Images/m1-1.png)  | This scenario describes an intelligent agent with "satiety" and "energy" attributes. The agent uses multiple rays to perceive its environment. The "satiety" decreases over time, and movement consumes "energy." Yet, if not hungry, the agent's "energy" replenishes gradually. The agent can also consume "Target" entities to restore its "satiety." |
-| 2 | RoboticCar  | ![替代文本](./Images/m2-1.png)                              | In this scenario, you will have access to a vehicle equipped with the capability to perform various maneuvers such as moving forward and making turns. The objective is to train the vehicle to successfully accomplish specific tasks.                                                                                                                  |
+|   | Scene       | Image                        | Description                                                                                                                                                                                                                                                                                                                                              |
+| - | ----------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1 | RollerAgent | ![替代文本](./Images/m1-1.png) | This scenario describes an intelligent agent with "satiety" and "energy" attributes. The agent uses multiple rays to perceive its environment. The "satiety" decreases over time, and movement consumes "energy." Yet, if not hungry, the agent's "energy" replenishes gradually. The agent can also consume "Target" entities to restore its "satiety." |
+| 2 | RoboticCar  | ![替代文本](./Images/m2-1.png) | In this scenario, you will have access to a vehicle equipped with the capability to perform various maneuvers such as moving forward and making turns. The objective is to train the vehicle to successfully accomplish specific tasks.                                                                                                                  |
 
 ## SetUp
 
@@ -64,10 +65,13 @@ pip3 install -e ./ml-agents
 ```
 
 #### 2.Load ml-agents to  Unity Project
+
 You can follow the [Offical Document](https://github.com/Unity-Technologies/ml-agents/blob/develop/docs/Getting-Started.md).
 
 #### 3.Install CUDA(Ubuntu 22.04)
+
 ##### 3.1 Install Nvidia-Driver.
+
 ```bash
 sudo apt update && sudo apt upgrade -y
 # or sudo apt update
@@ -77,7 +81,9 @@ sudo ubuntu-drivers autoinstall
 reboot
 nvidia-smi
 ```
+
 ##### 3.2 Install CUDA 11.3
+
 ```bash
 wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda-repo-ubuntu2004-11-3-local_11.3.0-465.19.01-1_amd64.deb
 sudo dpkg -i cuda-repo-ubuntu2004-11-3-local_11.3.0-465.19.01-1_amd64.deb
@@ -86,10 +92,15 @@ sudo apt-get update
 sudo apt-get -y install cuda-11-3
 
 ```
+
 ##### 3.3 Set Enviroment Variables
+
 ```bash
 export PATH=$PATH:/usr/local/cuda/bin  
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+```
+```
+tensorboard --logdir results
 ```
 ## License
 

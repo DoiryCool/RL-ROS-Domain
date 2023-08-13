@@ -108,7 +108,7 @@ public class RollerAgent : Agent
     satiety = Mathf.Clamp(satiety, 0f, MAX_SATIETY);
     
     if (satiety <= 0){
-        SetReward(-100f);
+        SetReward(-50f);
         floorMeshRenderer.material = loseMaterial;
         EndEpisode();
     }
@@ -132,7 +132,7 @@ public class RollerAgent : Agent
         }
         if(other.TryGetComponent<Wall>(out Wall wall)){
             floorMeshRenderer.material = loseMaterial;
-            SetReward(-100f);
+            SetReward(-1000f);
             EndEpisode();
         }
     }

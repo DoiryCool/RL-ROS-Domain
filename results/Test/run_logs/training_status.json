@@ -1,0 +1,51 @@
+{
+    "GluemanBh": {
+        "checkpoints": [
+            {
+                "steps": 4096,
+                "file_path": "results/Test/GluemanBh/GluemanBh-4096.onnx",
+                "reward": null,
+                "creation_time": 1691940924.5261378,
+                "auxillary_file_paths": [
+                    "results/Test/GluemanBh/GluemanBh-4096.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 4096,
+            "file_path": "results/Test/GluemanBh.onnx",
+            "reward": null,
+            "creation_time": 1691940924.5261378,
+            "auxillary_file_paths": [
+                "results/Test/GluemanBh/GluemanBh-4096.pt"
+            ]
+        }
+    },
+    "JoymanBh": {
+        "checkpoints": [
+            {
+                "steps": 1408,
+                "file_path": "results/Test/JoymanBh/JoymanBh-1408.onnx",
+                "reward": null,
+                "creation_time": 1691940924.5690794,
+                "auxillary_file_paths": [
+                    "results/Test/JoymanBh/JoymanBh-1408.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1408,
+            "file_path": "results/Test/JoymanBh.onnx",
+            "reward": null,
+            "creation_time": 1691940924.5690794,
+            "auxillary_file_paths": [
+                "results/Test/JoymanBh/JoymanBh-1408.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.11.0+cu113"
+    }
+}

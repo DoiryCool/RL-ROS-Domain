@@ -928,6 +928,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7623356920430126981, guid: 81cea5922469c6e61abdf1765cc62f6c, type: 3}
+      propertyPath: MaxStep
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623356920430126981, guid: 81cea5922469c6e61abdf1765cc62f6c, type: 3}
       propertyPath: satiety
       value: 100
       objectReference: {fileID: 0}

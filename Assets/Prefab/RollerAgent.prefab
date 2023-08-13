@@ -416,9 +416,9 @@ MonoBehaviour:
     VectorObservationSize: 12
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
+      m_NumContinuousActions: 3
       BranchSizes: 
-    VectorActionSize: 02000000
+    VectorActionSize: 03000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
@@ -447,7 +447,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 10000
-  Target: {fileID: 0}
+  areaController: {fileID: 0}
   information: {fileID: 0}
   EnergySlider: {fileID: 1761337708417065424}
   SatietySlider: {fileID: 1747598840519414191}
@@ -460,7 +460,7 @@ MonoBehaviour:
   energy: 1000
   satiety: 500
   EnergyRecoryScaler: 2
-  areaController: {fileID: 0}
+  FoodReward: 10
   forceMultiplier: 10
   rotationSpeed: 10
 --- !u!114 &1859230045277746832
@@ -521,7 +521,7 @@ MonoBehaviour:
   - Wall
   - Goal
   m_RaysPerDirection: 3
-  m_MaxRayDegrees: 50
+  m_MaxRayDegrees: 180
   m_SphereCastRadius: 0.53
   m_RayLength: 16
   m_RayLayerMask:

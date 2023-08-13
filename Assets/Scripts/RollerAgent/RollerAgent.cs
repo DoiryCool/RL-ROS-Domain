@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class RollerAgent : Agent
 {
-
-    public Transform Target;
+    public BaseTrainAreaController areaController;
 
     public GameObject information;
     Text information_text;
@@ -22,16 +21,21 @@ public class RollerAgent : Agent
     public MeshRenderer floorMeshRenderer; 
     public Vector3 initLocation;
     public int times = 0;
-    public float energy = 1000;
-    public float satiety = 200;
+    public float energy = 100;
+    private float MAX_ENERGY;
+    public float satiety = 100;
+    private float MAX_SATIETY;
 
-    public float EnergyRecoryScaler = 4f;
-
+    public float EnergyRecoryScaler = 0.1f;
+    public float FoodReward = 10f;
     Rigidbody rBody;
     RayPerceptionSensorComponent3D ray3D;
 
-    public BaseTrainAreaController areaController;
      void Start(){
+        MAX_ENERGY = energy;
+        MAX_SATIETY = satiety;
+        EnergySlider.GetComponent<Slider>().maxValue = MAX_ENERGY;
+        SatietySlider.GetComponent<Slider>().maxValue = MAX_SATIETY;
         initLocation = this.transform.localPosition;
         rBody = GetComponent<Rigidbody>();
         information_text = information.GetComponent<Text>();
@@ -43,8 +47,8 @@ public class RollerAgent : Agent
     public override void OnEpisodeBegin(){
         //Debug.Log("Episode Times:" + times);
         times += 1;
-        energy = 1000;
-        satiety = 200;
+        energy = MAX_ENERGY;
+        satiety = MAX_SATIETY;
         information_text.text = "Episode Times: " + times.ToString();
         this.rBody.angularVelocity = Vector3.zero;
         this.rBody.velocity = Vector3.zero;
@@ -62,30 +66,36 @@ public class RollerAgent : Agent
     }
     public float forceMultiplier = 10f;
     public float rotationSpeed = 10f;
-    public override void OnActionReceived(ActionBuffers actionBuffers){
-        Vector3 controlSignal = Vector3.zero;
-        Vector3 rotationControlSignal = Vector3.zero;
-        controlSignal.x = actionBuffers.ContinuousActions[0];
-        controlSignal.z = actionBuffers.ContinuousActions[1];
-        rotationControlSignal.y = actionBuffers.ContinuousActions[2];
+    public override void OnActionReceived(ActionBuffers actionBuffers)
+{
+        Vector3 controlSignal = new Vector3(actionBuffers.ContinuousActions[0], 0f, actionBuffers.ContinuousActions[1]);
+        Vector3 rotationControlSignal = new Vector3(0f, actionBuffers.ContinuousActions[2], 0f);
 
-        if (energy > 0){
-            energy -= controlSignal.magnitude + rotationControlSignal.magnitude * 0.5f;
-            rBody.AddForce(controlSignal * forceMultiplier);
-            Vector3 rotationChange = rotationControlSignal * rotationSpeed * Time.deltaTime;
+        Vector3 force = controlSignal * forceMultiplier;
+        Vector3 rotationChange = rotationControlSignal * rotationSpeed * Time.fixedDeltaTime;
+
+        float controlSignalMagnitude = controlSignal.magnitude;
+        float rotationControlSignalMagnitude = rotationControlSignal.magnitude;
+        energy -= (controlSignalMagnitude * 1f + rotationControlSignalMagnitude * 0.5f) * Time.fixedDeltaTime;
+
+        if (energy > 0)
+        {
+            rBody.AddForce(force, ForceMode.Force);
             transform.Rotate(rotationChange);
-        }else{
-            this.rBody.velocity = Vector3.zero;
-            this.rBody.angularVelocity = Vector3.zero;
+        }
+        else
+        {
+            rBody.velocity = Vector3.zero;
+            rBody.angularVelocity = Vector3.zero;
         }
 
-        if (this.transform.localPosition.y < -1)
+        if (transform.localPosition.y < -1f)
         {
             floorMeshRenderer.material = loseMaterial;
             EndEpisode();
         }
+    }
 
-}
 
     public override void Heuristic(in ActionBuffers actionOut){
         ActionSegment<float> continuesActions = actionOut.ContinuousActions;
@@ -94,31 +104,35 @@ public class RollerAgent : Agent
     }
 
     void Update(){
-        satiety -= 1f;        
-        if (satiety < 0){
-            SetReward(-1000f);
-            floorMeshRenderer.material = loseMaterial;
-            EndEpisode();
-        }
-        if (satiety > 0 && energy < 1000f){
-            energy += 1f * EnergyRecoryScaler ; 
-        }
-        EnergySlider.GetComponent<Slider>().value = energy;
-        SatietySlider.GetComponent<Slider>().value = satiety;
+    satiety -= 0.1f;
+    satiety = Mathf.Clamp(satiety, 0f, MAX_SATIETY);
+    
+    if (satiety <= 0){
+        SetReward(-100f);
+        floorMeshRenderer.material = loseMaterial;
+        EndEpisode();
     }
+    
+    if (satiety > 0 && energy < MAX_ENERGY){
+        energy += Time.deltaTime * EnergyRecoryScaler; // 根据时间增加能量
+        energy = Mathf.Clamp(energy, 0f, MAX_ENERGY);
+    }
+    
+    EnergySlider.GetComponent<Slider>().value = energy;
+    SatietySlider.GetComponent<Slider>().value = satiety;
+}
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<Goal>(out Goal goal)){
-            areaController.OnTargetCollided();
+            areaController.ResetTargets();
             floorMeshRenderer.material = winMaterial;
-            satiety = 50f + satiety < 200f ?  50f + satiety : 200f;
-            // SetReward(10000f);
-            // EndEpisode();
+            satiety = FoodReward + satiety < MAX_SATIETY ?  FoodReward + satiety : MAX_SATIETY;
+            AddReward(10f);
         }
         if(other.TryGetComponent<Wall>(out Wall wall)){
-            //Debug.Log("Get Wall");
             floorMeshRenderer.material = loseMaterial;
-            SetReward(-1000f);
+            SetReward(-100f);
             EndEpisode();
         }
     }

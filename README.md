@@ -66,7 +66,16 @@ pip3 install -e ./ml-agents
 ##### 2.Load ml-agents to  Unity Project
 You can follow the [offical doc](https://github.com/Unity-Technologies/ml-agents/blob/develop/docs/Getting-Started.md).
 
-##### 3.Load ROS2 to Unity Project
+##### 3.Install CUDA
+```bash
+sudo apt update && sudo apt upgrade -y
+# or sudo apt update
+ubuntu-drivers devices
+sudo ubuntu-drivers autoinstall
+# or sudo apt install nvidia-driver-535
+reboot
+nvidia-smi
+```
 
 ## License
 

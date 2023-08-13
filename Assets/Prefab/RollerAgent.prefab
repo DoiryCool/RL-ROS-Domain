@@ -306,7 +306,6 @@ GameObject:
   - component: {fileID: 1859230045277746832}
   - component: {fileID: 3052315996314261400}
   - component: {fileID: 9201209173212710209}
-  - component: {fileID: 7383059163552045532}
   m_Layer: 0
   m_Name: RollerAgent
   m_TagString: Untagged
@@ -414,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 6
+    VectorObservationSize: 12
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -424,7 +423,7 @@ MonoBehaviour:
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
-  m_InferenceDevice: 1
+  m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: MoveToGoal
   TeamId: 0
@@ -459,7 +458,8 @@ MonoBehaviour:
   initLocation: {x: 0, y: 0, z: 0}
   times: 0
   energy: 1000
-  satiety: 200
+  satiety: 500
+  EnergyRecoryScaler: 2
   areaController: {fileID: 0}
   forceMultiplier: 10
   rotationSpeed: 10
@@ -485,7 +485,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2332918564416093076}
   serializedVersion: 4
-  m_Mass: 0.0000001
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_SensorName: RayFace
   m_DetectableTags:
   - Wall
-  - Untagged
+  - Goal
   m_RaysPerDirection: 3
   m_MaxRayDegrees: 50
   m_SphereCastRadius: 0.53
@@ -533,22 +533,6 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
---- !u!114 &7383059163552045532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2332918564416093076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
 --- !u!1 &5331327954297235023
 GameObject:
   m_ObjectHideFlags: 0

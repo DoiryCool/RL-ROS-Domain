@@ -52,7 +52,7 @@ public class GluemanController : Agent
         sensor.AddObservation(this.transform.localPosition);
         sensor.AddObservation(this.transform.rotation);
     }
-    public float forceMultiplier = 10f;
+    public float forceMultiplier = 2f;
     public float rotationSpeed = 10f;
     public override void OnActionReceived(ActionBuffers actionBuffers)
 {

@@ -180,7 +180,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1532158490139267249, guid: 9070bb7e57239ac68a03ed1cdb3fe44a, type: 3}
       propertyPath: m_Name
-      value: Car
+      value: LogisticsRobot
       objectReference: {fileID: 0}
     - target: {fileID: 1636728153426252444, guid: 9070bb7e57239ac68a03ed1cdb3fe44a, type: 3}
       propertyPath: areaController
